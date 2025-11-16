@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Photography Portfolio</title>
-  </head>
-  <body>
-    <h1>Welcome to my portfolio!</h1>
-    <p>More coming soon...</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BigDB Photography</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="light">
+  <header>
+    <h1 class="gradient-text">BigDB Photography</h1>
+    <button id="mode-toggle">🌙</button>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <div class="photo"><img src="images/photo1.jpg" alt="Photo 1"></div>
+      <div class="photo"><img src="images/photo2.jpg" alt="Photo 2"></div>
+      <div class="photo"><img src="images/photo3.jpg" alt="Photo 3"></div>
+      <div class="photo"><img src="images/photo4.jpg" alt="Photo 4"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 BigDB Photography</p>
+  </footer>
+
+  <script src="gallery.js"></script>
+  <script>
+    const toggle = document.getElementById('mode-toggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      document.body.classList.toggle('light');
+    });
+  </script>
+</body>
 </html>
