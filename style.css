@@ -14,11 +14,7 @@ body {
   transition: background 0.4s, color 0.4s;
   line-height: 1.6;
   padding: 0 20px;
-}
-
-body {
-  /* keep your other body styles, just ensure this is there */
-  padding-top: 80px;
+  padding-top: 90px; /* room for floating pill */
 }
 
 body.light {
@@ -44,56 +40,55 @@ body.dark {
 }
 
 /* ------------------------------------------------------
-   idk chat told me to put this
+   LAYOUT
 ------------------------------------------------------ */
 
 section {
-    width: 100%;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ------------------------------------------------------
    HERO 
 ------------------------------------------------------ */
 .hero {
-    width: 100%;
-    max-width: 900px;
+  width: 100%;
+  max-width: 900px;
 
-    margin: 0 auto;
-    padding: 80px 20px 40px;
+  margin: 0 auto;
+  padding: 80px 20px 40px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    text-align: center;
+  text-align: center;
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #ff8fb1, #c77dff, #7ca1ff, #74f2ce);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg, #ff8fb1, #c77dff, #7ca1ff, #74f2ce);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    width: 100%;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 .hero-sub {
-    font-size: 1.15rem;
-    opacity: 0.8;
-    width: 100%;
+  font-size: 1.15rem;
+  opacity: 0.8;
+  width: 100%;
 }
 
-
 /* ------------------------------------------------------
-   FILTERS
+   LEGACY FILTERS (section .filters, if still used)
 ------------------------------------------------------ */
 .filters {
   display: flex;
@@ -119,7 +114,6 @@ section {
   color: #fff;
   transform: translateY(-2px);
 }
-
 
 /* ------------------------------------------------------
    GALLERY
@@ -153,7 +147,6 @@ section {
   transform: scale(1.05);
 }
 
-
 /* ------------------------------------------------------
    LIGHTBOX
 ------------------------------------------------------ */
@@ -174,7 +167,6 @@ section {
   box-shadow: 0 0 30px rgba(0,0,0,0.4);
 }
 
-
 /* ------------------------------------------------------
    ABOUT
 ------------------------------------------------------ */
@@ -193,7 +185,6 @@ section {
   font-size: 1.1rem;
   opacity: 0.85;
 }
-
 
 /* ------------------------------------------------------
    CONTACT
@@ -224,7 +215,10 @@ section {
   font-size: 1rem;
 }
 
-.contact-form textarea { resize: none; height: 140px; }
+.contact-form textarea { 
+  resize: none; 
+  height: 140px; 
+}
 
 .contact-form button {
   padding: 12px;
@@ -238,8 +232,9 @@ section {
   transition: 0.3s ease;
 }
 
-.contact-form button:hover { transform: scale(1.02); }
-
+.contact-form button:hover { 
+  transform: scale(1.02); 
+}
 
 /* ------------------------------------------------------
    FOOTER
@@ -251,14 +246,12 @@ footer {
   font-size: 0.9rem;
 }
 
-
 /* ------------------------------------------------------
    RESPONSIVE
 ------------------------------------------------------ */
 @media (max-width: 600px) {
   .hero h1 { font-size: 2.3rem; }
 }
-
 
 /* ------------------------------------------------------
    FLOATING PILL HEADER (hidden until scroll)
@@ -316,7 +309,7 @@ body.dark .glass-pill {
   white-space: nowrap;
 }
 
-/* Filters inline, same font */
+/* Filters inline container */
 .pill-filters {
   display: flex;
   flex-wrap: wrap;
@@ -325,30 +318,50 @@ body.dark .glass-pill {
   justify-content: flex-start;
 }
 
+/* ------------------------------------------------------
+   APPLE-STYLE FILTER PILL BUTTONS (LIGHT + DARK)
+------------------------------------------------------ */
+
+/* Base pill filter button */
 .pill-filters .filter-btn {
   font-family: inherit;
   font-size: 0.85rem;
   font-weight: 500;
-
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 999px;
   border: none;
-  background: var(--card);
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: 0.25s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-.pill-filters .filter-btn:hover,
+/* LIGHT MODE */
+body.light .pill-filters .filter-btn {
+  color: #222;
+  background: rgba(255, 255, 255, 0.55);   /* frosted white */
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+body.light .pill-filters .filter-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* Active (gradient) – same in both modes */
 .pill-filters .filter-btn.active {
   background: linear-gradient(135deg, #ff8fb1, #c77dff, #7ca1ff, #74f2ce);
   color: #fff;
 }
 
-/* Gradient text used for blphotoset + hero title */
-.gradient-text {
-  background: linear-gradient(135deg, #ff8fb1, #c77dff, #7ca1ff, #74f2ce);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* DARK MODE */
+body.dark .pill-filters .filter-btn {
+  color: #f5f5f5;
+  background: rgba(255, 255, 255, 0.12);   /* frosted dark */
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+body.dark .pill-filters .filter-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
 }
 
 /* Mode toggle inside pill */
@@ -372,11 +385,7 @@ body.dark .glass-pill #mode-toggle {
   color: #ffffff;
 }
 
-/* Make room so hero isn't under the pill */
-body {
-  padding-top: 90px; /* adjust if pill overlaps hero too much */
-}
-
+/* Mobile pill layout */
 @media (max-width: 650px) {
   .glass-pill {
     grid-template-columns: 1fr;
