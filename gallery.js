@@ -41,3 +41,21 @@ photos.forEach(photo => {
 lightbox.addEventListener("click", () => {
   lightbox.style.display = "none";
 });
+// Show pill header only after scrolling past hero
+const header = document.querySelector('.glass-header');
+const hero = document.querySelector('.hero');
+
+function updateHeaderVisibility() {
+  if (!header || !hero) return;
+  const rect = hero.getBoundingClientRect();
+
+  // when bottom of hero is above top of viewport → show pill
+  if (rect.bottom <= 0) {
+    header.classList.add('visible');
+  } else {
+    header.classList.remove('visible');
+  }
+}
+
+window.addEventListener('scroll', updateHeaderVisibility);
+window.addEventListener('load', updateHeaderVisibility);
