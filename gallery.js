@@ -5,6 +5,7 @@ toggle.addEventListener("click", () => {
   document.body.classList.toggle("light");
 });
 
+
 // FILTERS -------------------------------------------------------
 const filterBtns = document.querySelectorAll(".filter-btn");
 const photos = document.querySelectorAll(".photo");
@@ -25,6 +26,7 @@ filterBtns.forEach(btn => {
     });
   });
 });
+
 
 // LIGHTBOX ------------------------------------------------------
 const lightbox = document.getElementById("lightbox");
@@ -59,3 +61,61 @@ function updateHeaderVisibility() {
 
 window.addEventListener('scroll', updateHeaderVisibility);
 window.addEventListener('load', updateHeaderVisibility);
+
+
+// SCROLL ANIMATIONS ----------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollElems = document.querySelectorAll(".scroll-fade");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  scrollElems.forEach(el => observer.observe(el));
+});
+
+
+// CONTACT FORM SUBMIT (AJAX to Formspree) -------------------
+const contactForm = document.querySelector(".contact-form");
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const status = document.createElement("p");
+    status.style.marginTop = "10px";
+    status.style.fontSize = "0.9rem";
+    status.style.opacity = "0.8";
+
+    // remove old status if any
+    const oldStatus = contactForm.querySelector(".form-status");
+    if (oldStatus) oldStatus.remove();
+    status.classList.add("form-status");
+    contactForm.appendChild(status);
+
+    try {
+      const formData = new FormData(contactForm);
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+      });
+
+      if (response.ok) {
+        status.textContent = "Thanks! I’ll get back to you soon.";
+        contactForm.reset();
+      } else {
+        status.textContent = "Something went wrong. You can also reach me directly via email.";
+      }
+    } catch (err) {
+      status.textContent = "Network error. Please try again later.";
+    }
+  });
+}
