@@ -65,3 +65,29 @@ footer {
   font-size: 0.9rem;
   color: gray;
 }
+
+/* Filters */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #e0e0e0;
+  transition: background 0.3s;
+}
+
+body.dark .filter-btn {
+  background: #333333;
+  color: #ffffff;
+}
+
+.filter-btn:hover {
+  background: #cccccc;
+}
