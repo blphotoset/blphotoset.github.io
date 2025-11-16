@@ -44,6 +44,16 @@ body.dark {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ------------------------------------------------------
+   idk chat told me to put this
+------------------------------------------------------ */
+
+section {
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* ------------------------------------------------------
    HERO 
