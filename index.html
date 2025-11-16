@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>blphotoset</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body class="light">
-  <header>
+
+  <!-- Sticky Floating Header -->
+  <header class="glass-header">
     <h1 class="gradient-text">BenLac Photoset</h1>
     <button id="mode-toggle">🌙</button>
   </header>
 
   <main>
+
+    <!-- About Section -->
+    <section class="about">
+      <div class="about-content">
+        <h2>About Me</h2>
+        <p>
+          I’m Benjamin, a Montreal-based photographer capturing high-energy sports, fitness, and nightlife moments.
+          My goal is to turn real-life motion into clean, modern visuals with personality — bold lighting, crisp
+          colours, and a sense of movement in every shot.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filters -->
     <section class="filters">
       <button class="filter-btn" data-category="all">All</button>
       <button class="filter-btn" data-category="sports">Sports</button>
@@ -21,14 +39,29 @@
       <button class="filter-btn" data-category="events">Events / Nightlife</button>
     </section>
 
+    <!-- Gallery -->
     <section class="gallery">
-      <div class="photo" data-category="sports"><img src="images/thomas driven flat.png" alt="Photo 1"></div>
-      <div class="photo" data-category="fitness"><img src="images/photo2.jpg" alt="Photo 2"></div>
-      <div class="photo" data-category="events"><img src="images/photo3.jpg" alt="Photo 3"></div>
-      <div class="photo" data-category="sports"><img src="images/adrien majestic.png" alt="Photo 4"></div>
-      <div class="photo" data-category="fitness"><img src="images/photo5.jpg" alt="Photo 5"></div>
-      <div class="photo" data-category="events"><img src="images/photo6.jpg" alt="Photo 6"></div>
+      <div class="photo" data-category="sports"><img src="images/thomas driven flat.png" alt=""></div>
+      <div class="photo" data-category="fitness"><img src="images/photo2.jpg" alt=""></div>
+      <div class="photo" data-category="events"><img src="images/photo3.jpg" alt=""></div>
+      <div class="photo" data-category="sports"><img src="images/adrien majestic.png" alt=""></div>
+      <div class="photo" data-category="fitness"><img src="images/photo5.jpg" alt=""></div>
+      <div class="photo" data-category="events"><img src="images/photo6.jpg" alt=""></div>
     </section>
+
+    <!-- Contact -->
+    <section class="contact">
+      <h2>Contact</h2>
+      <p>For bookings, collaborations, or events, reach out below:</p>
+
+      <form action="https://formspree.io/f/xwpeqrdo" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="_replyto" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
   </main>
 
   <footer>
@@ -36,6 +69,7 @@
   </footer>
 
   <script src="gallery.js"></script>
+
   <script>
     // Light/Dark mode toggle
     const toggle = document.getElementById('mode-toggle');
@@ -44,7 +78,7 @@
       document.body.classList.toggle('light');
     });
 
-    // Category filter
+    // Filters
     const filterBtns = document.querySelectorAll('.filter-btn');
     const photos = document.querySelectorAll('.photo');
 
@@ -52,14 +86,15 @@
       btn.addEventListener('click', () => {
         const category = btn.dataset.category;
         photos.forEach(photo => {
-          if (category === 'all' || photo.dataset.category === category) {
-            photo.style.display = 'block';
-          } else {
-            photo.style.display = 'none';
-          }
+          photo.style.display =
+            (category === 'all' || photo.dataset.category === category)
+              ? 'block'
+              : 'none';
         });
       });
     });
   </script>
+
 </body>
+
 </html>
