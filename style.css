@@ -33,12 +33,6 @@ body.dark {
   --card: #1c1c1c;
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #ff63ff, #737bff, #3ecbff, #54ffb0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .fade-in {
   opacity: 0;
   animation: fadeUp 1s ease forwards;
@@ -97,20 +91,6 @@ section {
     width: 100%;
 }
 
-#mode-toggle {
-    margin-top: 25px;
-    background: var(--card);
-    border: none;
-    padding: 10px 14px;
-    border-radius: 14px;
-    cursor: pointer;
-    font-size: 1.3rem;
-    transition: 0.25s ease;
-}
-
-#mode-toggle:hover {
-    transform: scale(1.12);
-}
 
 /* ------------------------------------------------------
    FILTERS
@@ -309,14 +289,15 @@ footer {
 
 /* The pill itself */
 .glass-pill {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* title | filters | toggle */
   align-items: center;
-  gap: 14px;
+  column-gap: 14px;
 
   padding: 8px 16px;
   width: min(980px, 95vw);
 
-  border-radius: 20px;            /* less round now */
+  border-radius: 20px;
   background: rgba(255, 255, 255, 0.96);  /* white in light mode */
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
@@ -328,27 +309,31 @@ body.dark .glass-pill {
   border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-/* Title + filters inline */
+/* Title */
 .pill-title {
   font-size: 0.98rem;
   font-weight: 600;
   white-space: nowrap;
 }
 
+/* Filters inline, same font */
 .pill-filters {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
+  justify-content: flex-start;
 }
 
-/* These reuse your existing filter buttons but smaller */
 .pill-filters .filter-btn {
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+
   padding: 6px 12px;
   border-radius: 999px;
   border: none;
   background: var(--card);
-  font-size: 0.85rem;
   cursor: pointer;
   transition: 0.2s ease;
 }
@@ -390,4 +375,24 @@ body.dark .glass-pill #mode-toggle {
 /* Make room so hero isn't under the pill */
 body {
   padding-top: 90px; /* adjust if pill overlaps hero too much */
+}
+
+@media (max-width: 650px) {
+  .glass-pill {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+    align-items: flex-start;
+  }
+
+  .pill-title {
+    justify-self: flex-start;
+  }
+
+  .pill-filters {
+    justify-content: flex-start;
+  }
+
+  .glass-pill #mode-toggle {
+    justify-self: flex-end;
+  }
 }
