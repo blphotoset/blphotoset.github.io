@@ -16,6 +16,11 @@ body {
   padding: 0 20px;
 }
 
+body {
+  /* keep your other body styles, just ensure this is there */
+  padding-top: 80px;
+}
+
 body.light {
   --bg: #ffffff;
   --text: #111111;
