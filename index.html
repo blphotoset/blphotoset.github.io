@@ -1,100 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>blphotoset</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-</head>
+  <title>BenLac Photography</title>
 
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
 <body class="light">
 
-  <!-- Sticky Floating Header -->
-  <header class="glass-header">
-    <h1 class="gradient-text">BenLac Photoset</h1>
+  <!-- HERO ------------------------------------------------------------ -->
+  <section class="hero fade-in">
+    <h1 class="gradient-text">BenLac Photography</h1>
+    <p class="hero-sub">Sports • Fitness • Events</p>
     <button id="mode-toggle">🌙</button>
-  </header>
+  </section>
 
-  <main>
+  <!-- FILTERS ------------------------------------------------------------ -->
+  <section class="filters fade-in">
+    <button class="filter-btn active" data-category="all">All</button>
+    <button class="filter-btn" data-category="sports">Sports</button>
+    <button class="filter-btn" data-category="fitness">Fitness / Gym</button>
+    <button class="filter-btn" data-category="events">Events / Nightlife</button>
+  </section>
 
-    <!-- About Section -->
-    <section class="about">
-      <div class="about-content">
-        <h2>About Me</h2>
-        <p>
-          I’m Benjamin, a Montreal-based photographer capturing high-energy sports, fitness, and nightlife moments.
-          My goal is to turn real-life motion into clean, modern visuals with personality — bold lighting, crisp
-          colours, and a sense of movement in every shot.
-        </p>
-      </div>
-    </section>
+  <!-- GALLERY ------------------------------------------------------------ -->
+  <section class="gallery fade-in">
+    <div class="photo" data-category="sports"><img src="images/thomas-driven-flat.png" alt=""></div>
+    <div class="photo" data-category="fitness"><img src="images/photo2.jpg" alt=""></div>
+    <div class="photo" data-category="events"><img src="images/photo3.jpg" alt=""></div>
+    <div class="photo" data-category="sports"><img src="images/adrien-majestic.png" alt=""></div>
+    <div class="photo" data-category="fitness"><img src="images/photo5.jpg" alt=""></div>
+    <div class="photo" data-category="events"><img src="images/photo6.jpg" alt=""></div>
+  </section>
 
-    <!-- Filters -->
-    <section class="filters">
-      <button class="filter-btn" data-category="all">All</button>
-      <button class="filter-btn" data-category="sports">Sports</button>
-      <button class="filter-btn" data-category="fitness">Fitness / Gym</button>
-      <button class="filter-btn" data-category="events">Events / Nightlife</button>
-    </section>
+  <!-- ABOUT ------------------------------------------------------------ -->
+  <section class="about fade-in">
+    <h2 class="gradient-text">About Me</h2>
+    <p>
+      I’m Benjamin, a Montreal-based photographer capturing high-energy sports, fitness, and nightlife moments.
+      My goal is to turn real-life motion into clean, modern visuals with personality: 
+      bold lighting, crisp colours, and a sense of movement in every shot.
+    </p>
+  </section>
 
-    <!-- Gallery -->
-    <section class="gallery">
-      <div class="photo" data-category="sports"><img src="images/thomas driven flat.png" alt=""></div>
-      <div class="photo" data-category="fitness"><img src="images/photo2.jpg" alt=""></div>
-      <div class="photo" data-category="events"><img src="images/photo3.jpg" alt=""></div>
-      <div class="photo" data-category="sports"><img src="images/adrien majestic.png" alt=""></div>
-      <div class="photo" data-category="fitness"><img src="images/photo5.jpg" alt=""></div>
-      <div class="photo" data-category="events"><img src="images/photo6.jpg" alt=""></div>
-    </section>
+  <!-- CONTACT ------------------------------------------------------------ -->
+  <section class="contact fade-in">
+    <h2 class="gradient-text">Get In Touch</h2>
+    
+    <form action="https://formspree.io/f/xgegbldg" method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Email address" required>
+      <textarea name="message" placeholder="Your message..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
-    <!-- Contact -->
-    <section class="contact">
-      <h2>Contact</h2>
-      <p>For bookings, collaborations, or events, reach out below:</p>
+  <!-- LIGHTBOX ------------------------------------------------------------ -->
+  <div id="lightbox">
+    <img id="lightbox-img" src="">
+  </div>
 
-      <form action="https://formspree.io/f/xwpeqrdo" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="_replyto" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
-
-  </main>
-
+  <!-- FOOTER ------------------------------------------------------------ -->
   <footer>
-    <p>© 2025 blphotoset</p>
+    <p>© 2025 BenLac Photography</p>
   </footer>
 
   <script src="gallery.js"></script>
 
-  <script>
-    // Light/Dark mode toggle
-    const toggle = document.getElementById('mode-toggle');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      document.body.classList.toggle('light');
-    });
-
-    // Filters
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const photos = document.querySelectorAll('.photo');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const category = btn.dataset.category;
-        photos.forEach(photo => {
-          photo.style.display =
-            (category === 'all' || photo.dataset.category === category)
-              ? 'block'
-              : 'none';
-        });
-      });
-    });
-  </script>
-
 </body>
-
 </html>
