@@ -11,13 +11,18 @@
 </head>
 <body class="light">
 
-  <!-- APPLE-STYLE FLOATING PILL HEADER -->
+  <!-- Floating Apple-style pill header (appears after scrolling past hero) -->
   <header class="glass-header">
     <div class="glass-pill">
-      <div class="pill-left">
-        <span class="pill-title gradient-text">BenLac Photography</span>
-        <span class="pill-sub">Sports • Fitness • Events</span>
-      </div>
+      <span class="pill-title gradient-text">blphotoset</span>
+  
+      <nav class="pill-filters">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="sports">Sports</button>
+        <button class="filter-btn" data-category="fitness">Fitness / Gym</button>
+        <button class="filter-btn" data-category="events">Events / Nightlife</button>
+      </nav>
+  
       <button id="mode-toggle">🌙</button>
     </div>
   </header>
@@ -27,14 +32,6 @@
     <h1 class="gradient-text">BenLac Photography</h1>
     <p class="hero-sub">Sports • Fitness • Events</p>
     <button id="mode-toggle">🌙</button>
-  </section>
-
-  <!-- FILTERS ------------------------------------------------------------ -->
-  <section class="filters fade-in">
-    <button class="filter-btn active" data-category="all">All</button>
-    <button class="filter-btn" data-category="sports">Sports</button>
-    <button class="filter-btn" data-category="fitness">Fitness / Gym</button>
-    <button class="filter-btn" data-category="events">Events / Nightlife</button>
   </section>
 
   <!-- GALLERY ------------------------------------------------------------ -->
