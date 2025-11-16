@@ -273,3 +273,83 @@ footer {
 @media (max-width: 600px) {
   .hero h1 { font-size: 2.3rem; }
 }
+
+
+/* ------------------------------------------------------
+   APPLE-STYLE FLOATING PILL HEADER
+------------------------------------------------------ */
+.glass-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  display: flex;
+  justify-content: center;
+
+  z-index: 1000;
+}
+
+/* The pill itself */
+.glass-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 10px 18px;
+  width: min(900px, 92vw);
+
+  border-radius: 999px;
+  background: radial-gradient(circle at top, #2a2a2a, #050505);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.65);
+}
+
+.pill-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.pill-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.pill-sub {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* Reuse your gradient but it will now be on the title */
+.gradient-text {
+  background: linear-gradient(135deg, #ff8fb1, #c77dff, #7ca1ff, #74f2ce);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Mode toggle inside the pill */
+.glass-pill #mode-toggle {
+  border: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.95rem;
+
+  background: #f5f5f7;
+  color: #000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-pill #mode-toggle:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+body.dark .glass-pill #mode-toggle {
+  background: #0d84ff;
+  color: #ffffff;
+}
