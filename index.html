@@ -9,29 +9,56 @@
 </head>
 <body class="light">
   <header>
-    <h1 class="gradient-text">BenLac Photography</h1>
+    <h1 class="gradient-text">BenLac Photoset</h1>
     <button id="mode-toggle">🌙</button>
   </header>
 
   <main>
+    <section class="filters">
+      <button class="filter-btn" data-category="all">All</button>
+      <button class="filter-btn" data-category="sports">Sports</button>
+      <button class="filter-btn" data-category="fitness">Fitness / Gym</button>
+      <button class="filter-btn" data-category="events">Events / Nightlife</button>
+    </section>
+
     <section class="gallery">
-      <div class="photo"><img src="images/thomas driven flat.png" alt="Photo 1"></div>
-      <div class="photo"><img src="images/8 nice.avif" alt="Photo 2"></div>
-      <div class="photo"><img src="images/adrien majestic.png" alt="Photo 3"></div>
-      <div class="photo"><img src="images/photo4.jpg" alt="Photo 4"></div>
+      <div class="photo" data-category="sports"><img src="images/photo1.jpg" alt="Photo 1"></div>
+      <div class="photo" data-category="fitness"><img src="images/photo2.jpg" alt="Photo 2"></div>
+      <div class="photo" data-category="events"><img src="images/photo3.jpg" alt="Photo 3"></div>
+      <div class="photo" data-category="sports"><img src="images/photo4.jpg" alt="Photo 4"></div>
+      <div class="photo" data-category="fitness"><img src="images/photo5.jpg" alt="Photo 5"></div>
+      <div class="photo" data-category="events"><img src="images/photo6.jpg" alt="Photo 6"></div>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 BenLac Photography</p>
+    <p>© 2025 blphotoset</p>
   </footer>
 
   <script src="gallery.js"></script>
   <script>
+    // Light/Dark mode toggle
     const toggle = document.getElementById('mode-toggle');
     toggle.addEventListener('click', () => {
       document.body.classList.toggle('dark');
       document.body.classList.toggle('light');
+    });
+
+    // Category filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const photos = document.querySelectorAll('.photo');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.dataset.category;
+        photos.forEach(photo => {
+          if (category === 'all' || photo.dataset.category === category) {
+            photo.style.display = 'block';
+          } else {
+            photo.style.display = 'none';
+          }
+        });
+      });
     });
   </script>
 </body>
